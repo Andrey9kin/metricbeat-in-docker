@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  mbeat:
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "3"
+    pid: host
+    network_mode: host
+    build: 
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    volumes:
+      - $PWD/cfg:/mb/cfg
