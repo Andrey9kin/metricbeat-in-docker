@@ -29,4 +29,5 @@ RUN mkdir /mb/cfg
 VOLUME /mb/cfg
 WORKDIR /mb
 
-CMD ["dumb-init", "--", "/mb/metricbeat", "-e", "-c", "/mb/cfg/metricbeat.yml", "-d", "publish"]
+# system.hostfs according to https://www.elastic.co/guide/en/beats/metricbeat/5.2/running-in-container.html
+CMD ["dumb-init", "--", "/mb/metricbeat", "-e", "-c", "/mb/cfg/metricbeat.yml", "-system.hostfs", "/hostfs", "-d", "publish"]

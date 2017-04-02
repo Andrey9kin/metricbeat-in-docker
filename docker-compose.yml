@@ -18,3 +18,6 @@ services:
         - no_proxy
     volumes:
       - $PWD/cfg:/mb/cfg
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
